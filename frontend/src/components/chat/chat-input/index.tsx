@@ -16,7 +16,13 @@ const ChatInputBox: React.FC<ChatInputboxType> = ({
   feedback,
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const { chatResponse, setChatResponse, setDoc,setQueryLoading,queryLoading } = useChatContext();
+  const {
+    chatResponse,
+    setChatResponse,
+    setDoc,
+    setQueryLoading,
+    queryLoading,
+  } = useChatContext();
   // const [queryLoading, setQueryLoading] = useState(false);
   const [openMap, setOpenMap] = useState<boolean>(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -47,154 +53,168 @@ const ChatInputBox: React.FC<ChatInputboxType> = ({
     }
     setUploadedFile(null);
 
+    // try {
+    //   const response = await getChatResponse(formData);
+
+    //   if (!response?.ok) {
+    //     throw new Error("Network response was not ok");
+    //   }
+
+    //   const reader = response.body.getReader();
+    //   const decoder = new TextDecoder();
+
+    //   while (true) {
+    //     const { done, value } = await reader.read();
+    //     if (done) {
+    //       setQueryLoading(false);
+    //       break;
+    //     }
+
+    //     const chunk = decoder.decode(value);
+    //     const lines = chunk.split("\n\n");
+
+    //     for (const line of lines) {
+    //       if (line.startsWith("data: ")) {
+    //         const data = line.replace("data: ", "");
+    //         if (data === "[DONE]") {
+    //           setQueryLoading(false);
+    //           continue;
+    //         }
+
+    //         try {
+    //           const parsedData = JSON.parse(data);
+
+    //           if (parsedData.error) {
+    //             console.error("Stream error:", parsedData.error);
+    //             setChatResponse((prev) => [
+    //               ...prev,
+    //               { message: parsedData.error, sender: "bot", map: false },
+    //             ]);
+    //           } else {
+    //             const { content, map, classifier, receive_pdf } = parsedData;
+    //             const receive_pdf_bool = receive_pdf;
+    //             setDoc(false);
+    //             setOpenMap(map);
+
+    //             if (Boolean(receive_pdf)) {
+
+    //               const pdfInfo = JSON.parse(content);
+
+    //               try {
+    //                 const response = await fetch(
+    //                   `http://127.0.0.1:8000/download-pdf?pdf_path=${encodeURIComponent(pdfInfo.pdf_path)}`,
+    //                   {
+    //                     method: "GET",
+    //                   }
+    //                 );
+
+    //                 if (!response.ok) {
+    //                   throw new Error("PDF download failed");
+    //                 }
+    //                 console.log("file----------->",response)
+    //                 const blob = await response.blob();
+
+    //                 const url = window.URL.createObjectURL(blob);
+    //                 const link = document.createElement("a");
+    //                 link.href = url;
+
+    //                 const filename =
+    //                   "downloaded.pdf";
+    //                 link.setAttribute("download", filename);
+
+    //                 document.body.appendChild(link);
+    //                 link.click();
+    //                 link.remove();
+
+    //                 window.URL.revokeObjectURL(url);
+
+    //                 setChatResponse((prev) => {
+    //                   const lastMessage = prev[prev.length - 1];
+    //                   if (
+    //                     lastMessage.sender === "bot" &&
+    //                     !lastMessage.message.includes("Document uploaded")
+    //                   ) {
+    //                     return [
+    //                       ...prev.slice(0, -1),
+    //                       {
+    //                         message: "Your Document has been downloaded",
+    //                         sender: "bot",
+    //                         map,
+    //                         classifier: classifier,
+    //                       },
+    //                     ];
+    //                   }
+
+    //                   return [
+    //                     ...prev,
+    //                     {
+    //                       message: "Your Document has been download",
+    //                       sender: "bot",
+    //                       map,
+    //                       classifier: classifier,
+    //                     },
+    //                   ];
+    //                 });
+    //                 return ;
+    //               } catch (error) {
+    //                 console.log(error);
+    //               }
+    //             }
+
+    //             setChatResponse((prev) => {
+    //               const lastMessage = prev[prev.length - 1];
+    //               if (
+    //                 lastMessage.sender === "bot" &&
+    //                 !lastMessage.message.includes("Document uploaded")
+    //               ) {
+    //                 return [
+    //                   ...prev.slice(0, -1),
+    //                   {
+    //                     message: content,
+    //                     sender: "bot",
+    //                     map,
+    //                     classifier: classifier,
+    //                   },
+    //                 ];
+    //               }
+
+    //               return [
+    //                 ...prev,
+    //                 {
+    //                   message: content,
+    //                   sender: "bot",
+    //                   map,
+    //                   classifier: classifier,
+    //                 },
+    //               ];
+    //             });
+    //           }
+    //         } catch (error) {
+    //           console.error("Error parsing stream data:", error);
+    //         }
+    //       }
+    //     }
+    //   }
+    // } catch (error) {
+    //   console.error("Streaming error:", error);
+    //   setChatResponse((prev) => [
+    //     ...prev,
+    //     { message: "An error occurred", sender: "bot", map: false },
+    //   ]);
+    // }
+    //
     try {
-      const response = await getChatResponse(formData);
+      const form = new FormData();
 
-      if (!response?.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-          setQueryLoading(false);
-          break;
-        }
-
-        const chunk = decoder.decode(value);
-        const lines = chunk.split("\n\n");
-
-        for (const line of lines) {
-          if (line.startsWith("data: ")) {
-            const data = line.replace("data: ", "");
-            if (data === "[DONE]") {
-              setQueryLoading(false);
-              continue;
-            }
-
-            try {
-              const parsedData = JSON.parse(data);
-
-              if (parsedData.error) {
-                console.error("Stream error:", parsedData.error);
-                setChatResponse((prev) => [
-                  ...prev,
-                  { message: parsedData.error, sender: "bot", map: false },
-                ]);
-              } else {
-                const { content, map, classifier, receive_pdf } = parsedData;
-                const receive_pdf_bool = receive_pdf;
-                setDoc(false);
-                setOpenMap(map);
-                
-                if (Boolean(receive_pdf)) {
-                 
-                  const pdfInfo = JSON.parse(content);
-    
-                  try {
-                    const response = await fetch(
-                      `http://127.0.0.1:8000/download-pdf?pdf_path=${encodeURIComponent(pdfInfo.pdf_path)}`,
-                      {
-                        method: "GET",
-                      }
-                    );
-
-                    if (!response.ok) {
-                      throw new Error("PDF download failed");
-                    }
-                    console.log("file----------->",response)
-                    const blob = await response.blob();
-
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement("a");
-                    link.href = url;
-
-                    const filename =
-                      "downloaded.pdf";
-                    link.setAttribute("download", filename);
-
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-
-                    window.URL.revokeObjectURL(url);
-
-                    setChatResponse((prev) => {
-                      const lastMessage = prev[prev.length - 1];
-                      if (
-                        lastMessage.sender === "bot" &&
-                        !lastMessage.message.includes("Document uploaded")
-                      ) {
-                        return [
-                          ...prev.slice(0, -1),
-                          {
-                            message: "Your Document has been downloaded",
-                            sender: "bot",
-                            map,
-                            classifier: classifier,
-                          },
-                        ];
-                      }
-    
-                      return [
-                        ...prev,
-                        {
-                          message: "Your Document has been download",
-                          sender: "bot",
-                          map,
-                          classifier: classifier,
-                        },
-                      ];
-                    });
-                    return ;
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }
-
-                setChatResponse((prev) => {
-                  const lastMessage = prev[prev.length - 1];
-                  if (
-                    lastMessage.sender === "bot" &&
-                    !lastMessage.message.includes("Document uploaded")
-                  ) {
-                    return [
-                      ...prev.slice(0, -1),
-                      {
-                        message: content,
-                        sender: "bot",
-                        map,
-                        classifier: classifier,
-                      },
-                    ];
-                  }
-
-                  return [
-                    ...prev,
-                    {
-                      message: content,
-                      sender: "bot",
-                      map,
-                      classifier: classifier,
-                    },
-                  ];
-                });
-              }
-            } catch (error) {
-              console.error("Error parsing stream data:", error);
-            }
-          }
-        }
-      }
-    } catch (error) {
-      console.error("Streaming error:", error);
+      form.append("query", searchQuery);
+      const res = await getChatResponse(form);
+      const data = await res?.json();
       setChatResponse((prev) => [
         ...prev,
-        { message: "An error occurred", sender: "bot", map: false },
+        { message: data?.data, sender: "bot", map: false },
       ]);
+    } catch (error) {
+      console.log(error);
     } finally {
       setQueryLoading(false);
     }
