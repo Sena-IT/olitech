@@ -1,0 +1,85 @@
+[
+  {
+    "name": "e_bill_file",
+    "placeholder": "Upload",
+    "type": "file",
+    "label": "Electricity Bill",
+    "description": "upload your file"
+  },
+  {
+    "name": "name",
+    "placeholder": "Enter your name",
+    "type": "text",
+    "label": "Name",
+    "description": "Enter your full name"
+  },
+  {
+    "name": "phoneNumber",
+    "placeholder": "Enter your phone number",
+    "type": "number",
+    "label": "Phone Number",
+    "description": "Enter your phone number"
+  },
+  {
+    "name": "email",
+    "placeholder": "Enter your email",
+    "type": "email",
+    "label": "Email",
+    "description": "Enter your email address"
+  },
+  {
+    "name": "quoteType",
+    "placeholder": "Select quote type",
+    "type": "select",
+    "label": "Quote Type",
+    "description": "Select the type of quote you need",
+    "options": [
+      {
+        "value": "On Grid Residential (Subsidy)",
+        "label": "On Grid Residential (Subsidy)"
+      },
+      { "value": "On Grid", "label": "On Grid" },
+      { "value": "Hybrid", "label": "Hybrid" },
+      { "value": "Solar pump", "label": "Solar pump" },
+      { "value": "Street Light", "label": "Street Light" }
+    ],
+    "navDetail":"What is a Quote Type?"
+  },
+  {
+    "name": "roofType",
+    "placeholder": "Select roof type",
+    "type": "select",
+    "label": "Roof Type",
+    "description": "Select your roof type",
+    "options": [
+      {
+        "value": "RCC (Reinforced Cement Concrete)",
+        "label": "RCC (Reinforced Cement Concrete)"
+      },
+      { "value": "Sheeted", "label": "Sheeted" }
+    ],
+    "navDetail":"What is a Roof Type?"
+  },
+  {
+    "name": "structureType",
+    "placeholder": "Select structure type",
+    "type": "select",
+    "label": "Structure Type",
+    "description": "Select your structure type",
+    "options": [
+      {
+        "value": "Pre Galvanized Structure - RCC",
+        "label": "Pre Galvanized Structure - RCC"
+      },
+      {
+        "value": "High Rised Structure - RCC",
+        "label": "High Rised Structure - RCC"
+      },
+      {
+        "value": "Mini Rail Structure - Sheeted",
+        "label": "Mini Rail Structure - Sheeted"
+      }
+    ],
+    "navDetail":"What is a Structure Type?"
+  }
+]
