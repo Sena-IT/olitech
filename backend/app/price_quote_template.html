@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Quotation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12pt; /* Increased base font size for better PDF readability */
+            line-height: 1.6;
+            margin: 0; /* Reset default margin */
+        }
+        .container {
+            width: 180mm; /* A4 width minus margins */
+            margin: 15mm auto; /* Center content with A4-appropriate margins */
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .company-details {
+            font-size: 10pt;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 18pt;
+        }
+        h3 {
+            font-size: 14pt;
+        }
+        p, li {
+            font-size: 12pt; /* Explicit paragraph size */
+        }
+        section {
+            margin-bottom: 40px; /* Adds spacing between sections */
+            padding: 20px; /* Adds inner spacing */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0; /* Space before and after the table */
+            font-size: 12pt;
+            border: 2px solid #444; /* Darker border */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Ensures border-radius applies */
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px; /* More spacing inside cells */
+            text-align: left;
+        }
+        
+        th {
+            background-color: #444; /* Dark header */
+            color: white;
+            font-weight: bold;
+            padding: 18px; /* More space inside headers */
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternating row color */
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd; /* Light blue hover effect */
+        }
+        .cost-summary {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        @media print {
+            .section {
+                page-break-after: always;
+            }
+            .no-break {
+                page-break-inside: avoid;
+            }
+            .footer {
+                position: running(footer);
+            }
+            body {
+                margin: 0;
+            }
+        }
+        @page {
+            size: A4;
+            margin: 15mm; /* Adjusted margin for better content fit */
+            @bottom-center {
+                content: element(footer);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1: Header and Client Info -->
+        <div class="section">
+            <div class="header">
+                <h2>QUOTATION</h2>
+                <p>Date: 01-03-2025 | Reference: SK/25/03/002</p>
+            </div>
+
+            <p><strong>TO:</strong><br>
+            MR JOSEPH SOUNDARAJAN<br>
+            796B, Vanavil Nagar, Tiruvannamalai</p>
+            
+            <p><strong>PROJECT:</strong><br>
+            On-Grid Subsidy Residential<br>
+            4.36 KW<br>
+            ENERGY THAT LASTS FOREVER</p>
+
+            <div class="company-details">
+                <p><strong>GSONS Industries Private Limited</strong><br>
+                OLITEC<br>
+                Head Office: No.5/63, Gateway house, House of Hiranandani, Egattur, OMR. Chennai 600130<br>
+                Factory: Sf.No.127/2, Vallimalai Ring Road, Perumalkuppam, Katpadi taluk, Vellore 632520, Tamil Nadu<br>
+                Website: www.olitec.in | Phone: +91 9843331543, +91 9840644034</p>
+            </div>
+        </div>
+
+        <!-- Page 2: System Specifications -->
+        <div class="section">
+            <p>We are pleased to offer you solar power generation system for your site 796B, Vanavil Nagar, Tiruvannamalai. We appreciate your first step towards distributed and renewable energy generation. We guarantee you that our system is optimized for higher energy generation while considering the cost, quality, and longevity of the system.</p>
+
+            <div class="no-break">
+                <h3>System Specifications</h3>
+                <table>
+                    <tr><th>Specification</th><th>Details</th></tr>
+                    <tr><td>System Type</td><td>On-Grid</td></tr>
+                    <tr><td>System Capacity</td><td>AC 3.6 kW DC: 4.36 kW</td></tr>
+                    <tr><td>Roof Type</td><td>RCC</td></tr>
+                    <tr><td>Roof Orientation</td><td>South</td></tr>
+                    <tr><td>O&M Years</td><td>5 Years (Except cleaning & security)</td></tr>
+                </table>
+            </div>
+
+            <div class="no-break">
+                <h3>Warranty Coverage</h3>
+                <table>
+                    <tr><th>Component</th><th>Warranty</th></tr>
+                    <tr><td>PV Module</td><td>10 Years Manufacturing Defect & 25 Years Performance</td></tr>
+                    <tr><td>Inverter</td><td>5 Years</td></tr>
+                    <tr><td>Switch Gears</td><td>1-2 Years Standard</td></tr>
+                    <tr><td>Structure</td><td>Galvanized for 10 Years</td></tr>
+                </table>
+            </div>
+
+            <h3>Protection Mechanism</h3>
+            <ul>
+                <li>✓ Lightening Arrestor</li>
+                <li>✓ AC and DC Side SPD</li>
+                <li>✓ DC side MCB</li>
+                <li>✓ AC Side MCB</li>
+                <li>✓ DC Fuse</li>
+                <li>✓ IP65 Inverter</li>
+            </ul>
+
+            <h3>Other Features</h3>
+            <ul>
+                <li>✓ Remote Monitoring with String Level</li>
+                <li>✓ Smart MPPT Algorithm for Higher Yield</li>
+            </ul>
+        </div>
+
+        <!-- Page 3: Bill of Material -->
+        <div class="section">
+            <h3>Bill of Material & Quantity</h3>
+            <div class="no-break">
+                <table>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Item</th>
+                        <th>Short Specification</th>
+                        <th>Make</th>
+                        <th>Unit</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr><td>1</td><td>Solar Module/Panel</td><td>545 Wp Mono Perc Bifacial DCR</td><td>Premier</td><td>Nos</td><td>8</td></tr>
+                    <tr><td>2</td><td>Inverter</td><td>3.6 KW 1 Phase On grid</td><td>Polycab/Vsole/Solax</td><td>Nos</td><td>1</td></tr>
+                    <tr><td>3</td><td>DCDB</td><td>Polycarbonate With Mounting Plate</td><td>Sundrop/Streamtech</td><td>Nos</td><td>1</td></tr>
+                    <tr><td>4</td><td>ACDB</td><td>Polycarbonate With Mounting Plate</td><td>Sundrop/Streamtech</td><td>Nos</td><td>1</td></tr>
+                    <tr><td>5</td><td>DC Cables</td><td>6 sq.mm solar Cable</td><td>Lapp</td><td>Mtrs</td><td>50</td></tr>
+                    <tr><td>6</td><td>AC Cables</td><td>4 sq.mm, 3 Core Cable</td><td>Polycab</td><td>Mtrs</td><td>5</td></tr>
+                    <tr><td>7</td><td>Earthing System</td><td>1 m Earth Rod with Chemical</td><td>Ashlok/Excel</td><td>Nos</td><td>2</td></tr>
+                    <tr><td>8</td><td>Lightening Arrestor</td><td>1m Frankline Type Cu Rod</td><td>Ashlok/Excel</td><td>Nos</td><td>1</td></tr>
+                    <tr><td>9</td><td>Conduits</td><td>PVC</td><td>Finolex</td><td>Mtrs</td><td>25</td></tr>
+                    <tr><td>10</td><td>Cables for Earthing</td><td>4 Sq.mm.</td><td>Havells/Polycab</td><td>Mtrs</td><td>25</td></tr>
+                    <tr><td>11</td><td>Cable Tray</td><td>PVC Cable Tray</td><td>-</td><td>Mtrs</td><td>2</td></tr>
+                    <tr><td>12</td><td>MC4 Connectors</td><td>IP65 mc4 connectors</td><td>Staubli</td><td>Pairs</td><td>2</td></tr>
+                    <tr><td>13</td><td>Module Mounting Structure</td><td>Galvanised Structure Min 600mm</td><td>Olitec</td><td>kW</td><td>4.36</td></tr>
+                </table>
+            </div>
+
+            <div class="cost-summary no-break">
+                <p>Total cost of the system inclusive GST: ₹ 2,63,200 /-</p>
+                <p>Subsidy reimbursed to customer: ₹ 78,000 /-</p>
+                <p><strong>Net cost of the system post subsidy: ₹ 1,85,200 /-</strong></p>
+            </div>
+        </div>
+
+        <!-- Page 4: Terms and Conditions -->
+        <div class="section">
+            <h3>Terms and Conditions</h3>
+            <div class="no-break">
+                <p><strong>Payment Terms:</strong> 60% advance, 30% Post Material Delivery, 5% before work completion, 5% post commissioning</p>
+                <p><strong>Timeline:</strong> 6-8 Weeks from advance payment</p>
+                <p><strong>Validity:</strong> Till 30-03-2025</p>
+            </div>
+        </div>
+
+        <!-- Running Footer -->
+        <div class="footer">
+            <p>GSONS Industries Private Limited<br>
+            Head Office: No.5/63, Gateway house, House of Hiranandani, Egattur, OMR. Chennai 600130<br>
+            Factory: Sf.No.127/2, Vallimalai Ring Road, Perumalkuppam, Katpadi taluk, Vellore 632520, Tamil Nadu<br>
+            Website: www.olitec.in | Phone: +91 9843331543, +91 9840644034</p>
+        </div>
+    </div>
+</body>
+</html>
